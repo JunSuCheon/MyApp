@@ -17,7 +17,7 @@ public class CalcMainActivity extends Activity {
     Button btnAdd, btnSub, btnMul, btnDiv;
     TextView textResult;
     String num1, num2;
-    Integer result;
+    Double result;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,45 +36,74 @@ public class CalcMainActivity extends Activity {
         textResult = (TextView) findViewById(R.id.TextResult);
 
 
-        btnAdd.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View arg0, MotionEvent arg1) {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) + Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
-                return false;
+                if (num1.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if (num2.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else {
+                    result = Double.parseDouble(num1) + Double.parseDouble(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
+
             }
         });
 
-        btnSub.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View arg0, MotionEvent arg1) {
+        btnSub.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) - Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
-                return false;
+                if (num1.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if (num2.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else {
+                    result = Double.parseDouble(num1) * Double.parseDouble(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
             }
         });
 
 
-        btnMul.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View arg0, MotionEvent arg1) {
+        btnMul.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) * Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
-                return false;
+                if (num1.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if (num2.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if (Double.parseDouble(num2) == 0)
+                    Toast.makeText(getApplicationContext(), "0으로 나누었습니다.", Toast.LENGTH_SHORT).show();
+                else {
+                    result = Double.parseDouble(num1) / Double.parseDouble(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
             }
         });
 
 
-        btnDiv.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View arg0, MotionEvent arg1) {
+        btnDiv.setOnClickListener(new View.OnClickListener()
+
+        {
+
+            public void onClick(View view) {
                 num1 = edit1.getText().toString();
                 num2 = edit2.getText().toString();
-                result = Integer.parseInt(num1) / Integer.parseInt(num2);
-                textResult.setText("계산 결과 : " + result.toString());
-                return false;
+                if (num1.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if (num2.isEmpty())
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                else if( Double.parseDouble(num2) == 0)
+                    Toast.makeText(getApplicationContext(), "0으로 나누었습니다.", Toast.LENGTH_SHORT).show();
+                else {
+                    result = Double.parseDouble(num1) % Double.parseDouble(num2);
+                    textResult.setText("계산 결과 : " + result.toString());
+                }
+
             }
         });
 
