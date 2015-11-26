@@ -1,1 +1,1 @@
-include ':calc2', ':dialog', ':intent'
+include ':calc2', ':dialog', ':intent', ':adapter'
